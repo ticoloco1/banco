@@ -1,0 +1,15 @@
+node_modules
+.next
+.env
+.env.local
+.env.*.local
+node_modules
+.next
+.env
+.env.local
+.env.*.local
+.vercel
+.env*.local
+
+# dumps PostgreSQL (podem conter dados sensíveis)
+backups/
