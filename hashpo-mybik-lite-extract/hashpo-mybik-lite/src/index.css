@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 98%;
+    --foreground: 220 40% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 13%;
+
+    --primary: 213 100% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 220 40% 13%;
+
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 155 70% 43%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 7 75% 56%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 213 100% 55%;
+
+    --radius: 1.125rem;
+
+    --sidebar-background: 213 100% 20%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 213 100% 20%;
+    --sidebar-accent: 213 80% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 213 60% 35%;
+    --sidebar-ring: 0 0% 100%;
+
+    /* Custom tokens */
+    --gold: 51 100% 50%;
+    --gold-foreground: 220 40% 13%;
+    --grid-border: 220 20% 92%;
+    --ticker-bg: 213 100% 20%;
+    --ticker-text: 0 0% 100%;
+    --slot-hover: 220 20% 97%;
+    --header-height: 56px;
+    --card-shadow: 0 8px 24px -4px hsl(213 100% 55% / 0.12);
+    --card-shadow-strong: 0 16px 40px -6px hsl(213 100% 55% / 0.18);
+    --ticker-up: 155 70% 43%;
+    --ticker-down: 7 75% 56%;
+    --neon-blue: 213 100% 55%;
+  }
+
+  .dark {
+    --background: 220 30% 8%;
+    --foreground: 0 0% 95%;
+    --card: 220 30% 11%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 30% 11%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 213 100% 60%;
+    --primary-foreground: 220 30% 8%;
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 155 70% 48%;
+    --accent-foreground: 220 30% 8%;
+    --destructive: 7 62% 45%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 220 20% 22%;
+    --input: 220 20% 22%;
+    --ring: 213 100% 60%;
+    --sidebar-background: 220 30% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 213 100% 60%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 220 20% 16%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 20% 22%;
+    --sidebar-ring: 213 100% 60%;
+    --gold: 51 100% 50%;
+    --gold-foreground: 220 30% 8%;
+    --grid-border: 220 20% 25%;
+    --ticker-bg: 220 30% 11%;
+    --ticker-text: 0 0% 100%;
+    --slot-hover: 220 20% 14%;
+    --ticker-up: 155 70% 50%;
+    --ticker-down: 7 75% 60%;
+    --neon-blue: 213 100% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+  }
+
+  strong, b {
+    font-weight: 900;
+  }
+}
+
+@layer utilities {
+  .ticker-badge {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-mono font-bold rounded-full;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .gold-text {
+    color: hsl(var(--primary));
+  }
+
+  .gold-bg {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* 3D Flip Card */
+  .flip-card {
+    perspective: 1200px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+    position: absolute;
+    inset: 0;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-ticker {
+    animation: ticker-scroll 30s linear infinite;
+  }
+
+  .animate-ticker-slow {
+    animation: ticker-scroll 60s linear infinite;
+  }
+
+  .dividend-source {
+    background-color: hsl(160 84% 39% / 0.15);
+    color: hsl(160, 84%, 30%);
+  }
+
+  .dark .dividend-source {
+    background-color: hsl(160 84% 39% / 0.2);
+    color: hsl(160, 84%, 55%);
+  }
+
+  .dividend-amount {
+    color: hsl(160, 84%, 39%);
+  }
+
+  .dark .dividend-amount {
+    color: hsl(160, 84%, 55%);
+  }
+}

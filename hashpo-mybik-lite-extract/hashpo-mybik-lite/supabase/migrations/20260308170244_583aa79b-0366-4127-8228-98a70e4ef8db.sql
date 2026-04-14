@@ -1,0 +1,1 @@
+ALTER TABLE public.mini_sites ADD COLUMN IF NOT EXISTS template_id text DEFAULT 'blank';
